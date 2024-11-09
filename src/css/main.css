@@ -1,0 +1,70 @@
+/* Global Styles */
+body {
+    font-family: 'Fredoka', sans-serif;
+}
+h1, h2, h3, .lead {
+    font-weight: 500;
+}
+.btn-custom {
+    background-color: #FFD700;
+    color: white;
+    border: none;
+}
+.btn-custom:hover {
+    background-color: #e6c200;
+    color: white;
+}
+.jumbotron {
+    background-color: #f9f9f9;
+}
+footer {
+    background-color: #DA291C;
+}
+/* Navbar Customization */
+.navbar {
+    background-color: #DA291C;
+}
+.navbar .navbar-nav .nav-link {
+    color: white;
+}
+.navbar .navbar-nav .nav-link:hover {
+    color: #FFD700;
+}
+#nav-logo {
+    height: 64px;
+    margin-top: -0.5em;
+    margin-bottom: -0.5em;
+}
+/* Jumbotron Customization */
+.jumbotron {
+    background-image: url('https://www.lego.com/cdn/cs/set/assets/blt8091e000d9ecedbc/Z3_Space.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+/* Card Customization */
+.card {
+    border: none;
+}
+.card-img-top {
+    max-height: 200px;
+    object-fit: cover;
+}
+.card-body {
+    padding: 1.5rem;
+}
+.card-title {
+    font-weight: 600;
+}
+.card-text {
+    font-size: 0.9rem;
+    color: #555;
+}
+/* Footer Customization */
+#footer-github {
+    margin-left: 1.5rem;
+    font-size: 2em;
+}
+#footer-copyright {
+    margin-top: -2.5rem;
+}
