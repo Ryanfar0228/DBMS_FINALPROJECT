@@ -67,3 +67,34 @@ CHANGE COLUMN id theme_id INT;
 ALTER TABLE themes
 ADD PRIMARY KEY (theme_id);
 
+-- ---------------------+
+-- SQL Operations       |
+-- ---------------------+
+
+-- creating set
+CREATE TABLE "set_name" ( -- <--------------------------------------------------------------------VARIABLE
+	part_num VARCHAR(255),
+    name VARCHAR(255),
+    quantity INT
+    ADD FOREIGN KEY (part_num) REFERENCES parts(part_num); 
+);
+
+-- deleting set
+DROP TABLE "set_name" -- <--------------------------------------------------------------------VARIABLE
+
+-- updating set
+INSERT INTO "set_name" (part_num, name, quantity)
+VALUES ("part_num", "name", "quantity"); -- <--------------------------------------------------------------------VARIABLE
+
+-- searching for specific part
+SELECT * FROM parts 
+WHERE part_num LIKE '%part_num%' -- <--------------------------------------------------------------------VARIABLE
+OR
+name LIKE '%part_name%'; -- <--------------------------------------------------------------------VARIABLE
+
+-- searching for specific set with list of parts
+SELECT sa.set_num, sa.name, p.part_num, p.name
+FROM sets_abbrev AS sa JOIN inventories_abbrev AS ia ON ia.set_num = sa.set_num
+					             JOIN inventory_parts_abbrev AS ip ON ip.inventory_id = ia.inventory_id
+                       JOIN parts AS p ON p.part_num = ip.part_num
+WHERE sa.name LIKE '%set_name%'; -- <--------------------------------------------------------------------VARIABLE
