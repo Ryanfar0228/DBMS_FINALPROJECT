@@ -93,8 +93,17 @@ OR
 name LIKE '%part_name%'; -- <--------------------------------------------------------------------VARIABLE
 
 -- searching for specific set with list of parts
-SELECT sa.set_num, sa.name, p.part_num, p.name
+SELECT sa.set_num, sa.name, p.part_num, p.name, ip.quantity
 FROM sets_abbrev AS sa JOIN inventories_abbrev AS ia ON ia.set_num = sa.set_num
-					             JOIN inventory_parts_abbrev AS ip ON ip.inventory_id = ia.inventory_id
+		       JOIN inventory_parts_abbrev AS ip ON ip.inventory_id = ia.inventory_id
                        JOIN parts AS p ON p.part_num = ip.part_num
 WHERE sa.name LIKE '%set_name%'; -- <--------------------------------------------------------------------VARIABLE
+
+-- seacrhing for death star parts (potential replacement for millenium falcon since not in dataset)
+SELECT sa.set_num, sa.name AS SetName, p.part_num, p.name AS PartName, ip.quantity
+FROM sets_abbrev AS sa JOIN inventories_abbrev AS ia ON ia.set_num = sa.set_num
+		       JOIN inventory_parts_abbrev AS ip ON ip.inventory_id = ia.inventory_id
+                       JOIN parts AS p ON p.part_num = ip.part_num
+WHERE sa.name LIKE '%Death Star%'
+AND
+sa.set_num LIKE '%75159-1%';
