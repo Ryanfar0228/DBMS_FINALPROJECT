@@ -1,16 +1,18 @@
-require('dotenv').config(); // Load environment variables from .env file
 const mysql = require('mysql2');
 
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST, // Loaded from .env
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',            // Replace with your MySQL username
+  password: 'yourpassword', // Replace with your MySQL password
+  database: 'LegoDB',       // Your database name
 });
 
-connection.connect((err) => {
-  if (err) throw err;
-  console.log('Database connected!');
+db.connect((err) => {
+  if (err) {
+    console.error('Database connection failed:', err.message);
+    process.exit(1);
+  }
+  console.log('Connected to the LegoDB database.');
 });
 
-module.exports = connection; // Export the connection for use in other files
+module.exports = db;
