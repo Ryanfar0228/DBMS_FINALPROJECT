@@ -1,33 +1,72 @@
 const express = require('express');
-const app = express();
+const path = require('path');
+const bodyParser = require('body-parser');
 const db = require('./dbConnection'); // Import the database connection
 
-// Import route files
-const partsRoutes = require('./routes/parts');
-const setsRoutes = require('./routes/sets');
-const themesRoutes = require('./routes/themes');
+const app = express();
+const PORT = 3000;
 
-// Middleware to parse JSON
-app.use(express.json());
+// Middleware
+app.use(bodyParser.urlencoded({ extended: true })); // Parse form data
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
 
-// Use route handlers for different endpoints
-app.use('/api/parts', partsRoutes);
-app.use('/api/sets', setsRoutes);
-app.use('/api/themes', themesRoutes);
-
-// Health check route (optional)
+//*******************************************************************************
+//*** Serve Main Page
+//*******************************************************************************
 app.get('/', (req, res) => {
-  res.send('API is working!');
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Error handling middleware (optional)
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send({ error: 'Something went wrong!' });
+//*******************************************************************************
+//*** Fetch LEGO Sets (GET)
+//*******************************************************************************
+app.get('/sets', (req, res) => {
+  const query = 'SELECT set_num, name, year FROM sets LIMIT 10';
+
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching sets:', err.message);
+      return res.status(500).send('<p>Error fetching LEGO sets</p>');
+    }
+
+    // Generate HTML response
+    let html = '<h1>LEGO Sets</h1><table border="1"><tr><th>Set Number</th><th>Name</th><th>Year</th></tr>';
+    results.forEach((set) => {
+      html += `<tr><td>${set.set_num}</td><td>${set.name}</td><td>${set.year}</td></tr>`;
+    });
+    html += '</table><br><a href="/">Back to Home</a>';
+
+    res.send(html);
+  });
 });
 
-// Start the server
-const PORT = process.env.PORT || 3000;
+//*******************************************************************************
+//*** Search LEGO Parts (POST)
+//*******************************************************************************
+app.post('/search', (req, res) => {
+  const { search } = req.body;
+  const query = 'SELECT name, part_num FROM parts WHERE name LIKE ? LIMIT 10';
+
+  db.query(query, [`%${search}%`], (err, results) => {
+    if (err) {
+      console.error('Error executing search:', err.message);
+      return res.status(500).send('<p>Error during search</p>');
+    }
+
+    // Generate HTML response
+    let html = `<h1>Search Results for "${search}"</h1><ul>`;
+    results.forEach((part) => {
+      html += `<li>${part.name} (Part Number: ${part.part_num})</li>`;
+    });
+    html += '</ul><br><a href="/">Back to Home</a>';
+
+    res.send(html);
+  });
+});
+
+//*******************************************************************************
+//*** Start the Server
+//*******************************************************************************
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
