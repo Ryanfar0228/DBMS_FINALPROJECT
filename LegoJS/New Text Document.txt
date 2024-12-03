@@ -1,1 +1,12 @@
-test
+/project
+  ├── /routes
+  │      ├── parts.js
+  │      ├── sets.js
+  │      └── themes.js
+  ├── /controllers
+  │      ├── partsController.js
+  │      ├── setsController.js
+  │      └── themesController.js
+  ├── app.js
+  ├── dbConnection.js
+  ├── .env
