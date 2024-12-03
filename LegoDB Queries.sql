@@ -1,3 +1,14 @@
+-- Connecting to Node.js --
+set SQL_SAFE_UPDATES = 0;
+set FOREIGN_KEY_UPDATES = 0;
+
+select PLUGIN_NAME, PLUGIN_STATUS
+from information_schema.PLUGINS
+where PLUGIN_NAME = 'caching_sha2_password';
+
+alter user 'root'@'localhost' identified with  caching_sha2_password  by '';
+flush privileges;
+
 -- Initializing --
 CREATE DATABASE legodb;
 USE legodb;
