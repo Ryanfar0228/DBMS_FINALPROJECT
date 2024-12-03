@@ -1,25 +1,22 @@
 Member 1: Phil Kershner
-My teammate and I agree that I handled X% of the overall project. My specific tasks included:
+My teammates and I agree that I handled X% of the overall project. My specific tasks included:
 
-Task 1: I designed and implemented the program module that ... (provide exact details)
-Task 2: I wrote ... (provide exact details)
-Task 3: I researched ... (provide exact details)
-Task 4: I integrated ... (provide exact details)
-...
+Task 1:
+
 
 Member 2: Aidan Elm
-My teammate and I agree that I handled Y% of the overall project. My specific tasks included:
+My teammates and I agree that I handled Y% of the overall project. My specific tasks included:
 
-Task 1: I designed and implemented the program module that ... (provide exact details)
-Task 2: I wrote ... (provide exact details)
-Task 3: I researched ... (provide exact details)
-Task 4: I integrated ... (provide exact details)
+Task 1: 
 
 
 Member 3: Ryan Farley
-My teammate and I agree that I handled Y% of the overall project. My specific tasks included:
+My teammates and I agree that I handled Y% of the overall project. My specific tasks included:
 
-Task 1: I designed and implemented the program module that ... (provide exact details)
-Task 2: I wrote ... (provide exact details)
-Task 3: I researched ... (provide exact details)
-Task 4: I integrated ... (provide exact details)
+Task 1: I focused on the Node Js layer of the project.
+Task 2: With Phil's assistance restructured the backend into two js files (Started with several, tried to use just one, settled on two) : app.js & dbConnection.js
+Task 3: Populated app.js with the ability to select, insert into, update and/or delete sql with get and post methods. 
+*Task 4: Provided entertainment to the group by texting messages of confusion anytime I was lost and had no idea what I was doing. 
+
+  *Not an actual task
+
