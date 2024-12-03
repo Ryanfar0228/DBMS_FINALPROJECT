@@ -1,19 +1,7 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const db = require('./dbConnection'); // Import the database connection
+const port = 3000;
 
-// Import route files
-const partsRoutes = require('./routes/parts');
-const setsRoutes = require('./routes/sets');
-const themesRoutes = require('./routes/themes');
-
-// Middleware to parse JSON
-app.use(express.json());
-
-// Use route handlers for different endpoints
-app.use('/api/parts', partsRoutes);
-app.use('/api/sets', setsRoutes);
-app.use('/api/themes', themesRoutes);
 
 // Health check route (optional)
 app.get('/', (req, res) => {
@@ -32,14 +20,13 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-require('dotenv').config(); // Load environment variables from .env file
 const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
-  host: process.env.DB_HOST, // Loaded from .env
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  host: "localhost", // Loaded from .env
+  user: "root",
+  password: "...",
+  database: "LegoDB",
 });
 
 connection.connect((err) => {
@@ -48,6 +35,8 @@ connection.connect((err) => {
 });
 
 module.exports = connection; // Export the connection for use in other files
+
+
 // Get all parts
 exports.getAllParts = (req, res) => {
   const query = 'SELECT * FROM parts';
@@ -105,6 +94,8 @@ exports.deletePart = (req, res) => {
   });
 };
 
+module.exports = router;
+
 // GET all parts
 router.get('/', (req, res) => {
   const query = 'SELECT * FROM parts';
@@ -132,8 +123,6 @@ router.get('/:part_num', (req, res) => {
     res.json(results[0]);
   });
 });
-
-module.exports = router;
 
 // GET all sets
 router.get('/', (req, res) => {
