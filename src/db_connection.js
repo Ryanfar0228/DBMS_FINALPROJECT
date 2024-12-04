@@ -1,3 +1,10 @@
+//*** Team 4: Aidan Elm, Ryan Farley, Phil Kershner
+//*** CSC 351
+//*** 5 Dec 24
+//*** Final Project db_connection.js | node js webserver connection and login to sql db
+
+
+
 const mysql = require('mysql2');
 
 const db = mysql.createConnection({

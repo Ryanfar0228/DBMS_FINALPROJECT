@@ -1,3 +1,8 @@
+//*** Team 4: Aidan Elm, Ryan Farley, Phil Kershner
+//*** CSC 351
+//*** 5 Dec 24
+//*** Final Project | app.js | node js web server connecting lego site to sql database.
+
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
