@@ -242,6 +242,36 @@ app.post('/search-set', (req, res) => {
 });
 
 //*******************************************************************************
+//*** Search custom sets POST
+//*******************************************************************************
+app.post('/search-custom-set', (req, res) => {
+    try {
+        const search = validateInput.searchInput(req.body.search);
+        const query = 'SELECT id, name FROM custom_sets WHERE name LIKE ? LIMIT 10';
+
+        db.query(query, [`%${search}%`], (err, results) => {
+            if (err) {
+                return handleDatabaseError(res, err, 'Error searching custom sets');
+            }
+
+            if (!results || results.length === 0) {
+                return res.send(`<h1>Search Results for "${search}"</h1><p>No custom sets found</p><br><a href="/">Back to Home</a>`);
+            }
+
+            let html = `<h1>Search Results for "${search}"</h1><ul>`;
+            results.forEach((set) => {
+                html += `<li>${set.name} (Set ID: ${set.id})</li>`;
+            });
+            html += '</ul><br><a href="/">Back to Home</a>';
+
+            res.send(html);
+        });
+    } catch (error) {
+        res.status(400).send(`<p>Invalid custom set search: ${error.message}</p><br><a href="/">Back to Home</a>`);
+    }
+});
+
+//*******************************************************************************
 //*** Start the Server
 //*******************************************************************************
 app.listen(PORT, () => {
