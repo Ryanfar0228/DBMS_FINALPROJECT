@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 //*** Fetch LEGO Sets (GET)
 //*******************************************************************************
 app.get('/sets', (req, res) => {
-    const query = 'SELECT set_num, name, year FROM sets LIMIT 10';
+    const query = 'SELECT set_num, name, year FROM sets_abbrev LIMIT 10';
 
     db.query(query, (err, results) => {
         if (err) {
@@ -138,7 +138,7 @@ app.post('/search-set', (req, res) => {
     const {
         search
     } = req.body; // Get search term
-    const query = 'SELECT set_num, name, year FROM sets WHERE name LIKE ? OR set_num LIKE ? LIMIT 10';
+    const query = 'SELECT set_num, name, year FROM sets_abbrev WHERE name LIKE ? OR set_num LIKE ? LIMIT 10';
 
     db.query(query, [`%${search}%`, `%${search}%`], (err, results) => {
         if (err) {

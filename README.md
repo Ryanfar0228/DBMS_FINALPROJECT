@@ -3,3 +3,5 @@ Update 11/09 (Aidan): I moved the project overview to the docs folder and put th
 Update 11/21 (Phil): I wrote basic MYSQL commands for bringing in tables and keys and for the select, delete, update, and create functions required by project. Next step is to create the node.js "middleman" and fine tune queries if necessary.
 
 Update 12/3 (Ryan) : Node Js completed pending testing with html layer. 
+
+Update 12/3 (Aidan): Node JS set up with the front end - not 100% perfect, but presentable. Will continue making changes
