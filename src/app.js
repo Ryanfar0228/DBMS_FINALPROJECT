@@ -1,3 +1,8 @@
+//*** Team 4: Aidan Elm, Ryan Farley, Phil Kershner
+//*** CSC 351
+//*** 5 Dec 24
+//*** Final Project app.js | node js webserver and functions
+
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
