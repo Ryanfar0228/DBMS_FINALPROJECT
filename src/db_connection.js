@@ -10,7 +10,7 @@ const mysql = require('mysql2');
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root', // MySQL username
-    password: 'toor', // MySQL password
+    password: 'G00sey-Gunk3r-1426', // MySQL password
     database: 'LegoDB', // Database name
 });
 
@@ -23,3 +23,4 @@ db.connect((err) => {
 });
 
 module.exports = db;
+
