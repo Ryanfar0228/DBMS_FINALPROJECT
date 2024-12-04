@@ -173,7 +173,7 @@ app.post('/add-part', (req, res) => {
                 return handleDatabaseError(res, err, 'Error adding part to custom set');
             }
 
-            res.send(`<p>Part "${part_num}" added to set ID "${set_id}"!</p><br><a href="/">Back to Home</a>`);
+            res.send(`<p>Part added to set!</p><br><a href="/">Back to Home</a>`);
         });
     } catch (error) {
         res.status(400).send(`<p>Invalid part addition: ${error.message}</p><br><a href="/">Back to Home</a>`);
@@ -203,7 +203,7 @@ app.post('/delete-part', (req, res) => {
                 return res.status(404).send(`<p>Part "${part_num}" not found in set ID "${set_id}"</p><br><a href="/">Back to Home</a>`);
             }
 
-            res.send(`<p>Part "${part_num}" removed from set ID "${set_id}"!</p><br><a href="/">Back to Home</a>`);
+            res.send(`<p>Part removed from set!</p><br><a href="/">Back to Home</a>`);
         });
     } catch (error) {
         res.status(400).send(`<p>Invalid part deletion: ${error.message}</p><br><a href="/">Back to Home</a>`);
