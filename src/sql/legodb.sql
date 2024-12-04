@@ -43,12 +43,12 @@ ALTER TABLE inventory_parts_abbrev
 ADD FOREIGN KEY (color_id) REFERENCES colors(color_id);
 
 -- inventory_sets Constraints and Keys
-ALTER TABLE inventory_sets 
+ALTER TABLE inventory_sets_abbrev
 MODIFY COLUMN set_num VARCHAR(100);
+ALTER TABLE inventory_sets_abbrev
+ADD FOREIGN KEY (set_num) REFERENCES sets_abbrev(set_num); -- Issues exist here (fixed?)
 ALTER TABLE inventory_sets
-ADD FOREIGN KEY (set_num) REFERENCES sets_abbrev(set_num); -- Issues exist here
-ALTER TABLE inventory_sets
-ADD FOREIGN KEY (inventory_id) REFERENCES inventories_abbrev(inventory_id); -- Issues exist here
+ADD FOREIGN KEY (inventory_id) REFERENCES inventories_abbrev(inventory_id); -- Issues exist here (fixed?)
 
 -- part_categories Constraints and Keys
 ALTER TABLE part_categories 
