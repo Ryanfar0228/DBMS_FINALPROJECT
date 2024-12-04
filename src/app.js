@@ -247,7 +247,7 @@ app.post('/search-set', (req, res) => {
 app.post('/search-custom-set', (req, res) => {
     try {
         const search = validateInput.searchInput(req.body.search);
-        const query = 'SELECT id, name FROM custom_sets WHERE name LIKE ? LIMIT 10';
+        const query = 'SELECT name FROM custom_sets WHERE name LIKE ? LIMIT 10';
 
         db.query(query, [`%${search}%`], (err, results) => {
             if (err) {
