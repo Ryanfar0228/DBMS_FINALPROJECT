@@ -1,3 +1,8 @@
+-- //*** Team 4: Aidan Elm, Ryan Farley, Phil Kershner
+-- //*** CSC 351
+-- //*** 9 Dec 24
+-- //*** Final Project Report
+
 -- Connecting to Node.js --
 set SQL_SAFE_UPDATES = 0;
 set FOREIGN_KEY_UPDATES = 0;
